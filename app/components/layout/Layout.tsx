@@ -12,6 +12,7 @@ import { ColorModeSwitcher } from '../ui/ColorModeSwitcher'
 import NextChakraLink from '../next-chakra/NextChakraLink'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import MobileMenu from './MobileMenu'
+import Head from 'next/head'
 
 const menuLinks = [
 	{ name: 'Home', href: '/' },
@@ -28,6 +29,10 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 	}
 	return (
 		<>
+			<Head>
+				<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+			</Head>
 			<Box
 				as="header"
 				py={2}
