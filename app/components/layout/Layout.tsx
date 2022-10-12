@@ -1,18 +1,23 @@
 import {
 	Box,
-	Button,
 	Container,
 	Flex,
 	IconButton,
 	Show,
-	Stack,
 	Text,
 	useColorModeValue,
 } from '@chakra-ui/react'
 import { FC, PropsWithChildren, useState } from 'react'
-import { ColorModeSwitcher } from './ui/ColorModeSwitcher'
-import NextChakraLink from './next-chakra/NextChakraLink'
+import { ColorModeSwitcher } from '../ui/ColorModeSwitcher'
+import NextChakraLink from '../next-chakra/NextChakraLink'
 import { HamburgerIcon } from '@chakra-ui/icons'
+import MobileMenu from './MobileMenu'
+
+const menuLinks = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Products', href: '/products' },
+	{ name: 'Categories', href: '/categories' },
+]
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 	const headerBg = useColorModeValue('teal.200', 'teal.500')
@@ -40,79 +45,24 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 								<NextChakraLink href="/">Home</NextChakraLink>
 								<NextChakraLink href="/products">Products</NextChakraLink>
 								<NextChakraLink href="/categories">Categories</NextChakraLink>
-								<NextChakraLink href="/about">About</NextChakraLink>
 							</Flex>
 						</Show>
 						<Box>
-							<ColorModeSwitcher  />
+							<ColorModeSwitcher />
 							<Show below="sm">
 								<IconButton
 									aria-label="Show menu"
 									icon={<HamburgerIcon />}
 									onClick={handleClickMenu}
 									bgColor="transparent"
+									_active={{}}
 								/>
 							</Show>
 						</Box>
 					</Flex>
 				</Container>
 			</Box>
-			{isMenu && (
-				<Stack as="nav" bgColor={headerBg}>
-					<NextChakraLink href="/">
-						<Button
-							variant="teal"
-							w="full"
-							textAlign="center"
-							borderBottom="1px"
-							borderColor={borderColor}
-							borderRadius="none"
-							fontWeight="base"
-						>
-							Home
-						</Button>
-					</NextChakraLink>
-					<NextChakraLink href="/products">
-						<Button
-							variant="teal"
-							w="full"
-							textAlign="center"
-							borderBottom="1px"
-							borderColor={borderColor}
-							borderRadius="none"
-							fontWeight="base"
-						>
-							Products
-						</Button>
-					</NextChakraLink>
-					<NextChakraLink href="/categories">
-						<Button
-							variant="teal"
-							w="full"
-							textAlign="center"
-							borderBottom="1px"
-							borderColor={borderColor}
-							borderRadius="none"
-							fontWeight="base"
-						>
-							Categories
-						</Button>
-					</NextChakraLink>
-					<NextChakraLink href="/about">
-						<Button
-							variant="teal"
-							w="full"
-							textAlign="center"
-							borderBottom="1px"
-							borderColor={borderColor}
-							borderRadius="none"
-							fontWeight="base"
-						>
-							About
-						</Button>
-					</NextChakraLink>
-				</Stack>
-			)}
+			{isMenu && <MobileMenu items={menuLinks} />}
 			<Container maxW="container.lg" as="main" my={8}>
 				{children}
 			</Container>

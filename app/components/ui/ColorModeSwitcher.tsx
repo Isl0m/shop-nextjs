@@ -11,6 +11,7 @@ type ColorModeSwitcherProps = Omit<IconButtonProps, 'aria-label'>
 export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
 	const { toggleColorMode } = useColorMode()
 	const text = useColorModeValue('dark', 'light')
+	const hoverColor = useColorModeValue('teal.100', 'teal.400')
 	const SwitchIcon = useColorModeValue(MoonIcon, SunIcon)
 
 	return (
@@ -24,6 +25,8 @@ export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
 			onClick={toggleColorMode}
 			icon={<SwitchIcon />}
 			aria-label={`Switch to ${text} mode`}
+			_hover={{ bgColor: hoverColor }}
+			_active={{}}
 			{...props}
 		/>
 	)

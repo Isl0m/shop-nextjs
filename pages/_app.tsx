@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
-import Layout from '@/components/Layout'
+import Layout from '@/layout/Layout'
 import axios from 'axios'
 
 export const API_SERVER_URL = `${process.env.APP_SERVER_URL}`
