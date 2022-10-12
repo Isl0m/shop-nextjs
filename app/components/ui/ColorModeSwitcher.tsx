@@ -15,6 +15,7 @@ export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
 
 	return (
 		<IconButton
+			bgColor="transparent"
 			size="md"
 			fontSize="lg"
 			variant="ghost"
